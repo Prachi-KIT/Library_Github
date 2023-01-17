@@ -1,0 +1,240 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="E_Library.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Website Running</title>
+
+    <%-- Bootstrap CSS --%>
+    <link href="CSS/bootstrap.min.css" rel="stylesheet" />
+    <%-- Datatable CSS --%>
+    <link href="Datatables/CSS/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <%-- Fontawesome CSS --%>
+    <link href="fontawesome/css/all.css" rel="stylesheet" />
+
+    <link href="CSS/Style.css" rel="stylesheet" />
+
+    <%--jQuery first, then Popper.js, then Bootstrap JS --%>
+
+    <script src="Scripts/jquery-3.3.1.slim.min.js"></script>
+    <script src="Scripts/popper.min.js"></script>
+    <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <style>
+        #social-icon-div a {
+            margin: 0px 15px;
+        }
+
+            #social-icon-div a i {
+                font-size: 20px;
+            }
+
+        .text-black {
+            color: black;
+        }
+
+        .space {
+            margin: 7% 0;
+        }
+    </style>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body style="height: auto;">
+
+    <form id="form1" runat="server">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="nav-link navbar-brand" href="#">
+                <img src="images/logo.jfif" runat="server" height="30" width="30" style="display: inline" />E-Library</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <asp:LinkButton ID="lknHome" runat="server" CssClass="nav-link" OnClick="lknHome_Click">Home<span class="sr-only">(current)</span></asp:LinkButton>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="About.html">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Term.html">Terms</a>
+                    </li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-item">
+                        <asp:LinkButton ID="lknViewbooks" runat="server" href="ViewBooks.aspx" CssClass="nav-link" OnClick="lknViewbooks_Click">View Books</asp:LinkButton>
+                    </li>
+                    <li class="nav-item">
+                        <asp:LinkButton ID="lknLogin" runat="server" href="Login.aspx" CssClass="nav-link" OnClick="lknLogin_Click1">User Login</asp:LinkButton>
+                    </li>
+                    <li class="nav-item">
+                        <asp:LinkButton ID="lknSignup" runat="server" href="Signup.aspx" CssClass="nav-link" OnClick="lknSignup_Click" data-target="">Sign Up</asp:LinkButton>
+                    </li>
+                    <li class="nav-item">
+                        <asp:LinkButton ID="lknLogout" runat="server" CssClass="nav-link" CausesValidation="false" OnClick="lknLogout_Click1">Logout</asp:LinkButton>
+                    </li>
+                    <li class="nav-item">
+                        <asp:LinkButton ID="lknuserinfo" runat="server" href="UserProfile.aspx" CssClass="nav-link" OnClick="lknuserinfo_Click">Hello</asp:LinkButton>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="main-container">
+            <div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+             </div>
+       
+
+
+            <!-- Remove the container if you want to extend the Footer to full width. -->
+            <div class="main-footer">
+            <!-- Footer -->
+            <footer class="text-center text-black-50">
+                <!-- Grid container -->
+                <div class="container">
+                    <!-- Section: Links -->
+                    <section class="mt-5">
+                        <!-- Grid row-->
+                        <div class="row text-center d-flex justify-content-center pt-5">
+
+                            <!-- Grid column -->
+                            <div class="col-md-3">
+                                <h6 class="text-uppercase font-weight-bold">
+                                    <asp:LinkButton ID="lknbookIssue" runat="server" href="BookIssue.aspx" class="text-black space" Font-Underline="false">Book Issue</asp:LinkButton>
+                                    /<asp:LinkButton ID="lknBookReturn" runat="server" class="text-black space" OnClick="lknBookReturn_Click" Font-Underline="false">Book Return</asp:LinkButton>
+                                </h6>
+
+                            </div>
+                            <!-- Grid column -->
+
+                            <!-- Grid column -->
+                            <div class="col-md-2">
+                                <h6 class="text-uppercase font-weight-bold">
+                                    <asp:LinkButton ID="lknAuthorMgmnt" runat="server" Font-Underline="false" href="AdminAuthor.aspx"
+                                        class="text-black space">Author Management</asp:LinkButton>
+                                </h6>
+                            </div>
+                            <!-- Grid column -->
+
+                            <!-- Grid column -->
+                            <div class="col-md-2">
+                                <h6 class="text-uppercase font-weight-bold">
+                                    <asp:LinkButton ID="lknAdminMemberMgmt" Font-Underline="false" runat="server"
+                                        href="AdminMemberManagement.aspx" class="text-black space">Member Management</asp:LinkButton>
+                                </h6>
+                            </div>
+                            <!-- Grid column -->
+
+                            <!-- Grid column -->
+                            <div class="col-md-3">
+                                <h6 class="text-uppercase font-weight-bold">
+                                    <asp:LinkButton ID="lknAdminPublisher" Font-Underline="false" runat="server"
+                                        href="Adminpublisher.aspx" class="text-black space">Publisher Management</asp:LinkButton>
+                                </h6>
+                            </div>
+                            <!-- Grid column -->
+
+                            <!-- Grid column -->
+                            <div class="col-md-2">
+                                <h6 class="text-uppercase font-weight-bold">
+                                    <asp:LinkButton ID="lknBookInventory" Font-Underline="false" runat="server"
+                                        href="BookInventory.aspx" class="text-black space">Book Inventory</asp:LinkButton>
+                                </h6>
+                            </div>
+                            <!-- Grid column -->
+
+                        </div>
+
+                    </section>
+                    <!-- Section: Links -->
+
+
+                    <hr class="my-5" />
+
+                    <!-- Section: Text -->
+                    <section class="mb-5">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-lg-8" id="social-icon-div">
+                                <a href="https://www.facebook.com/profile.php?id=100007826200339" class="text-black me-4">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="text-black me-4">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="https://mail.google.com/mail/u/0/#inbox" class="text-black me-4">
+                                    <i class="fab fa-google"></i>
+                                </a>
+                                <a href="https://www.instagram.com/prachigupta41" class="text-black me-4">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/prachi-gupta-a53114151" class="text-black me-4">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="https://github.com/Prachi-KIT" class="text-black me-4">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                            <div class="col-lg-4">
+                                <!-- Grid column -->
+                                <div class="col-md-1" style="margin-bottom: 10%;">
+                                    <h6 class="text-uppercase font-weight-bold">
+                                        <asp:LinkButton ID="lknAdminLogin" href="AdminLogin.aspx" class="text-black" runat="server" Font-Underline="false">login</asp:LinkButton>
+                                    </h6>
+                                </div>
+                                <!-- Grid column -->
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Section: Text -->
+
+
+               
+                <!-- Grid container -->
+
+                <!-- Copyright -->
+                <div
+                    class="text-center p-3">
+                    © 2020 Copyright:Prachi Gupta
+                </div>
+                    </div>
+                <!-- Copyright -->
+            </footer>
+            
+             </div>
+            <!-- Footer -->
+
+        </div>
+        
+        <!-- End of .container -->
+
+        <%--<script src="https://www.google.com/recaptcha/api.js?onload=renderRecaptcha&render=explicit" async defer></script>
+    <script type="text/javascript">
+        var your_site_key = '6Ld2T30iAAAAANkqgoOPOvXDBg2eKpg_K3ikLLKC';
+        var renderRecaptcha = function () {
+            grecaptcha.render('ReCaptchContainer', {
+                'sitekey': '6Ld2T30iAAAAANkqgoOPOvXDBg2eKpg_K3ikLLKC',
+                'callback': reCaptchaCallback,
+                theme: 'light', //light or dark
+                type: 'image',// image or audio
+                size: 'normal'//normal or compact
+            });
+        };
+        var reCaptchaCallback = function (response) {
+            if (response !== '') {
+                document.getElementById('lblMessage1').innerHTML = "";
+            }
+        };
+    </script>--%>
+       
+    </form>
+</body>
+</html>
